@@ -3,11 +3,12 @@ framework: mocha
 
 preRun:
      command:
+        - apt update -y
+        - apt install build-essential -y
+        - curl https://sh.rustup.rs -sSf | bash -s -- -y
+        - echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
         - yarn
-        - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh 
-        - source $HOME/.cargo/env
         - yarn build-native
-
 preMerge:
   pattern:
     - "packages/*/!(integration-tests|fs-write-stream-atomic)/test/*.js"
