@@ -6,7 +6,8 @@ preRun:
         - apt update -y
         - apt install build-essential -y
         - curl https://sh.rustup.rs -sSf | bash -s -- -y
-        - echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+        - source $HOME/.cargo/env
+        - rustup --version
         - yarn
         - yarn build-native
 preMerge:
